@@ -33,7 +33,7 @@ class APOE4ModelSingle(SingleFeatureModel):
         D = table.shape[0]
         A = np.log(1 / D) 
 	# build formula
-        self.create_regression(formula="apoe_risk_score_beta+sex+mars_age+bristol_type", metadata=MD)
+        self.create_regression(formula="apoe_risk_score_beta+sex+mars_age_fecal+bristol_type", metadata=MD)
 
         param_dict = {
             "depth": np.log(table.sum(axis="sample")),
