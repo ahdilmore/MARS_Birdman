@@ -21,7 +21,7 @@ echo Chunk $SLURM_ARRAY_TASK_ID / $SLURM_ARRAY_TASK_MAX
 
 TABLEID="zebra_ft_amyloid"
 TABLE="/projects/u19/Wisconsin_MARS/data/feature_tables/"$TABLEID".biom"
-SLURMS="/projects/u19/Wisconsin_MARS/birdman/amyloid/slurm_out/16S/"$TABLEID
+SLURMS="/projects/u19/Wisconsin_MARS/birdman/amyloid/slurm_out/"$TABLEID
 OUTDIR="/projects/u19/Wisconsin_MARS/birdman/amyloid/inferences/"$TABLEID
 LOGDIR="/projects/u19/Wisconsin_MARS/birdman/amyloid/logs/"$TABLEID
 mkdir -p $SLURMS
