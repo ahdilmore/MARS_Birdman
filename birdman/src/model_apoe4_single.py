@@ -1,19 +1,29 @@
 from pkg_resources import resource_filename
 
 import biom
+# IF USING A DIFFERENT STAN MODEL, CHANGE HERE
 from birdman import SingleFeatureModel
 import numpy as np
 import pandas as pd
 
+# PROVIDE FILEPATH TO STAN MODEL
+# ENSURE THAT YOU HAVE COMPILED THIS MODEL BY 
+# ACTIVATING BIRDMAN ENVIRONMENT
+# OPENING PYTHON/IPYTHON  
+# IMPORTING CMDSTANPY, THEN RUNNING 
+# cmdstanpy.CmdStanModel(stan_file="path/to/model.stan")
 MODEL_PATH = "/projects/u19/Wisconsin_MARS/birdman/src/stan/negative_binomial_single.stan"
+# REPLACE BELOW WITH YOUR METADATA 
 MD = pd.read_table("/projects/u19/Wisconsin_MARS/data/metadata/apoe4_metadata.tsv",
                    sep="\t", index_col='sample_name')
 
+# NAME CLASS SOMETHING RELEVANT TO YOUR MODEL
 class APOE4ModelSingle(SingleFeatureModel):
     def __init__(
         self,
         table: biom.Table,
         feature_id: str,
+        # OPTIONAL: CHANGE PARAMETERS
         beta_prior: float = 5.0,
         inv_disp_sd: float = 0.5,
         num_iter: int = 500,
@@ -32,7 +42,7 @@ class APOE4ModelSingle(SingleFeatureModel):
 
         D = table.shape[0]
         A = np.log(1 / D) 
-	# build formula
+        # REPLACE WITH YOUR PATSY STYLE FORMULA
         self.create_regression(formula="apoe_risk_score_beta+sex+mars_age_fecal+bristol_type", metadata=MD)
 
         param_dict = {

@@ -15,10 +15,12 @@ pwd; hostname; date
 
 set -e
 
+# REPLACE WITH YOUR ENVIRONMENT NAME
 source ~/anaconda3/bin/activate birdman
 
 echo Chunk $SLURM_ARRAY_TASK_ID / $SLURM_ARRAY_TASK_MAX
 
+# REPLACE WITH YOUR FILEPATHS
 TABLEID="zebra_ft_amyloid"
 TABLE="/projects/u19/Wisconsin_MARS/data/feature_tables/"$TABLEID".biom"
 SLURMS="/projects/u19/Wisconsin_MARS/birdman/amyloid/slurm_out/"$TABLEID
@@ -29,6 +31,7 @@ mkdir -p $OUTDIR
 mkdir -p $LOGDIR
 
 echo Starting Python script...
+# REPLACE WITH YOUR SCRIPT PATH 
 time python /projects/u19/Wisconsin_MARS/birdman/src/amyloid_birdman_chunked.py \
     --table-path $TABLE \
     --inference-dir $OUTDIR \

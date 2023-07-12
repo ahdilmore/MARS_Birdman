@@ -10,6 +10,7 @@ import click
 import numpy as np
 import pandas as pd
 from logger import setup_loggers
+# CHANGE TO IMPORT YOUR CLASS NAME FROM YOUR MODEL FILE
 from model_amyloid_single import AmyloidModelSingle
 
 @click.command()
@@ -42,6 +43,7 @@ def run_birdman(
 
     model_iter = ModelIterator(
         TABLE,
+        # CHANGE TO YOUR CLASS NAME
         AmyloidModelSingle,
         num_chunks=num_chunks,
         beta_prior=beta_prior,

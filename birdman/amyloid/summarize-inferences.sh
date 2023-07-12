@@ -13,6 +13,7 @@ import re
 import arviz as az
 import pandas as pd
 
+# REPLACE WITH YOUR INFERENCES FILEPATH
 for inference_dir in glob.glob('/projects/u19/Wisconsin_MARS/birdman/amyloid/inferences/*'):
 
     FEAT_REGEX = re.compile("F\d{4}_(.*).nc")
